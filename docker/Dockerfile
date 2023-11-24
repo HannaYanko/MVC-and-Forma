@@ -11,9 +11,15 @@ RUN pecl install xdebug && docker-php-ext-enable xdebug;
 
 COPY .. /var/www/html/
 
+RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
+    && php composer-setup.php --install-dir=/usr/local/bin --filename=composer \
+    && php -r "unlink('composer-setup.php');"
+
+COPY .. /var/www/html/
+
 ENV TERM xterm-256color
 
-RUN php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer
+RUN composer install
 
 CMD php-fpm
 EXPOSE 80:80
