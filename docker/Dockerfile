@@ -21,5 +21,8 @@ ENV TERM xterm-256color
 
 RUN composer install
 
+
 CMD php-fpm
 EXPOSE 80:80
+
+
