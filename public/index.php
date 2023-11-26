@@ -1,12 +1,12 @@
+
 <?php
-require __DIR__. '/../vendor/autoload.php';
 
-use Monolog\Logger;
-use Monolog\Handler\StreamHandler;
+require __DIR__ . '/../vendor/autoload.php';
 
-$log = new Logger('name');
-$log->pushHandler(new StreamHandler('app.log', Logger::WARNING));
 
-$log->warning('Попередження');
-$logContents = file_get_contents('app.log');
-echo $logContents;
+
+
+use app\Controllers\Controller;
+
+$controller = new Controller;
+$controller->action();
