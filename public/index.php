@@ -1,4 +1,3 @@
-
 <?php
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -10,8 +9,8 @@ $view = new View();
 $controller = new Controller(new FormService(), $view);
 
 if (isset($_GET['action']) and $_GET['action'] === 'showForm') {
-    $controller->showForm();
+$controller->showForm();
 } else {
-    $data = $controller->getData();
-    $view->render($data);
+$data = $controller->getData();
+$view->render($data);
 }

@@ -1,27 +1,16 @@
 <?php
-namespace src\Controllers;
+require __DIR__ . '/../vendor/autoload.php';
 
-use src\Models\Model;
+use src\Controllers\Controller;
+use src\Views\View;
 use src\Services\FormService;
 
-class Controller
-{
-    private $formService;
+$view = new View();
+$controller = new Controller(new FormService(), $view);
 
-    public function __construct()
-    {
-        $this->formService = new FormService();
-    }
-
-    public function getData()
-    {
-        $formData = $this->formService->getDataFromPost();
-        $data = $this->formService->processData($formData);
-        return $data;
-    }
-
-    public function showForm()
-    {
-        $this->formService->showForm();
-    }
+if (isset($_GET['action']) && $_GET['action'] === 'showForm') {
+$controller->showForm();
+} else {
+$data = $controller->getData();
+$view->render($data);
 }
