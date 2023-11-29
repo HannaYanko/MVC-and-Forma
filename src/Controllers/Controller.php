@@ -2,26 +2,26 @@
 namespace src\Controllers;
 
 use src\Models\Model;
-
-use MyForm\ElementForm\Button;
-use MyForm\ElementForm\Select;
-use MyForm\ElementForm\Text;
-use MyForm\Generator;
+use src\Services\FormService;
 
 class Controller
 {
+    private $formService;
+
+    public function __construct()
+    {
+        $this->formService = new FormService();
+    }
+
     public function getData()
     {
-        $model = new Model();
-        $formController = new FormController();
-        $formData = $formController->getDataFromPost();
-        $data = $model->getData($formData);
+        $formData = $this->formService->getDataFromPost();
+        $data = $this->formService->processData($formData);
         return $data;
     }
 
     public function showForm()
     {
-        $formController = new FormController();
-        $formController->showForm();
+        $this->formService->showForm();
     }
 }

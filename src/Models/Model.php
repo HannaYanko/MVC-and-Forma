@@ -4,12 +4,10 @@ use MyForm\ElementForm\Button;
 use MyForm\ElementForm\Select;
 use MyForm\ElementForm\Text;
 use MyForm\Generator;
-
 class Model
 {
     public function getData(array $formData)
     {
-        $data = $formData;
-        return $data;
+        return $formData;
     }
 }
