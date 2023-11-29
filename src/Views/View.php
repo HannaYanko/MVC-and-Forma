@@ -6,6 +6,13 @@
     <title>Hello</title>
 </head>
 <body>
-<h1><?php echo $data; ?></h1>
+<h1><?php
+
+
+    $controller = new Controller();
+    $data = $controller->getData();
+
+    echo $data->getData();
+    ?></h1>
 </body>
 </html>

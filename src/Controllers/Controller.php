@@ -1,17 +1,27 @@
 <?php
+namespace src\Controllers;
 
-namespace app\Controllers\Controller;
+use src\Models\Model;
+
+use MyForm\ElementForm\Button;
+use MyForm\ElementForm\Select;
+use MyForm\ElementForm\Text;
+use MyForm\Generator;
 
 class Controller
-
 {
-    public function action() {
-        $model = new app\Models\Model();
-        $data = $model->getData();
-
-        include_once(__DIR__ . '/../Views/View.php');
+    public function getData()
+    {
+        $model = new Model();
+        $formController = new FormController();
+        $formData = $formController->getDataFromPost();
+        $data = $model->getData($formData);
+        return $data;
     }
 
+    public function showForm()
+    {
+        $formController = new FormController();
+        $formController->showForm();
+    }
 }
-
-
